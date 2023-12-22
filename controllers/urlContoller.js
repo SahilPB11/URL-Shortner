@@ -2,6 +2,7 @@ import Url from "../models/url.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import shortid from "shortid";
 
+// this is for creating a new short url
 export const newShortUrl = async (req, res, next) => {
   try {
     let { OrignalUrl } = req.body;
@@ -9,6 +10,7 @@ export const newShortUrl = async (req, res, next) => {
     // here we will check first that if url already exist or not in database
     let url = await Url.findOne({ OrignalUrl });
     // here i check that if url is already exist in that case i am sending the url
+    console.log(url);
     if (url) return res.status(200).send(url);
     // here i am making a short id
     const shortUrl = shortid();
@@ -23,6 +25,7 @@ export const newShortUrl = async (req, res, next) => {
   }
 };
 
+// with the help of short url  can take orignal url from database
 export const getOrignalUrl = async (req, res, next) => {
   try {
     const shortId = req.params.shortId;
@@ -38,7 +41,7 @@ export const getOrignalUrl = async (req, res, next) => {
         },
       }
     );
-    res.redirect(data.orignalUrl);
+    res.status(200).send(data);
   } catch (error) {
     next(error);
   }

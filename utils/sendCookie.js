@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// i am using this for send token in cookie
 const sendCookie = (res, user, statusCode = 201, message) => {
   const token = jwt.sign({ _id: user._id }, process.env.jwt_Secret);
   return res

@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 
+// if this function for check that user is authenticated or not we are matching its cookes with our
 const isAuthenticated = async (req, res, next) => {
   const { token } = req.cookies;
 
