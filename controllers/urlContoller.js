@@ -1,6 +1,7 @@
 import Url from "../models/url.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import shortid from "shortid";
+
 export const newShortUrl = async (req, res, next) => {
   try {
     let { OrignalUrl } = req.body;
@@ -17,6 +18,27 @@ export const newShortUrl = async (req, res, next) => {
       shortUrl: shortUrl,
     });
     res.status(200).send(url);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOrignalUrl = async (req, res, next) => {
+  try {
+    const shortId = req.params.shortId;
+    const data = await Url.findOneAndUpdate(
+      {
+        shortUrl: shortId,
+      },
+      {
+        $push: {
+          visitHistory: {
+            timestap: Date.now(),
+          },
+        },
+      }
+    );
+    res.redirect(data.orignalUrl);
   } catch (error) {
     next(error);
   }
