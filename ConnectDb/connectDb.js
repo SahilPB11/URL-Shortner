@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     await mongoose
       .connect(process.env.Mongo_URl, {
-        dbName: "ToDoApp",
+        dbName: "ShortUrl",
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
