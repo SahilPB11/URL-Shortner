@@ -9,11 +9,12 @@ export const signUp = async (req, res, next) => {
 
     let user = await User.findOne({ username });
 
-    if (!user) return next(new ErrorHandler("User Already Exist", 404));
+    if (user) return next(new ErrorHandler("User Already Exist", 404));
 
     const hashPassword = await bcrypt.hash(password, 10);
 
     user = await User.create({ username, password: hashPassword });
+    console.log(user);
 
     // calling function for send the response from utils
     sendCookie(res, user, 201, "Registerd Succesfully");

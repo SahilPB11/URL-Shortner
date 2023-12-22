@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
-import router from "./routes/user";
+import router from "./routes/user.js";
 import { errorMiddleware } from "./middlewares/error.js";
 export const app = express();
 config({
