@@ -1,5 +1,5 @@
 import Url from "../models/url.js";
-import ErrorHandler from "../utils/errorHandler.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
 import shortid from "shortid";
 
 // this is for creating a new short url
