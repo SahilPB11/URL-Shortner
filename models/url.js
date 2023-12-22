@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const urlSchema = new mongoose.Schema(
   {
-    originalUrl: {
+    orignalUrl: {
       type: String,
       required: true,
     },
@@ -13,12 +13,9 @@ const urlSchema = new mongoose.Schema(
     },
     visitHistory: [{ timestamps: { type: Number } }],
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   { timestamps: true }
 );
 
-export const Url = mongoose.model("Url", urlSchema);
+const Url = mongoose.model("Url", urlSchema);
+export default Url;
