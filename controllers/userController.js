@@ -1,6 +1,6 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
-import ErrorHandler from "../utils/errorHandler.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
 import sendCookie from "../utils/sendCookie.js";
 
 // SignUp User
