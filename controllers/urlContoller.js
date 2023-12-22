@@ -41,7 +41,14 @@ export const getOrignalUrl = async (req, res, next) => {
         },
       }
     );
-    res.status(200).send(data);
+
+    // Redirect the user to the original URL
+    if (data && data.orignalUrl) {
+      return res.redirect(data.orignalUrl);
+    } else {
+      // If no data found or original URL is not present
+      return next(new ErrorHandler("Original URL not found", 404));
+    }
   } catch (error) {
     next(error);
   }

@@ -5,8 +5,6 @@ const connectDB = async () => {
     await mongoose
       .connect(process.env.Mongo_URl, {
         dbName: "ShortUrl",
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
       })
       .then((c) =>
         console.log(`Databse connected safely with ${c.connection.host}`)
