@@ -1,7 +1,7 @@
 import express from "express";
+import { config } from "dotenv";
 
-const app = express();
-
-app.listen(3300, function () {
-  console.log("Server is working on 3000");
+export const app = express();
+config({
+  path: "./.env",
 });
